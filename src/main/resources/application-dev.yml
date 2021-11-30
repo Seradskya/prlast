@@ -1,0 +1,31 @@
+server.port: 1337
+security.jwt.token:
+  secret-key: very-long-secret-key-to-avoid-problems-with-jwt-security-lib
+  expire-length: 3600000 #one hour
+  token-validity-in-seconds: 86400
+  token-validity-in-seconds-for-remember-me: 2592000
+
+logging:
+  level:
+    root: INFO
+    com.tradio: TRACE
+
+spring.datasource:
+  hikari:
+    connectionTimeout: 20000
+    maximumPoolSize: 5
+  url: jdbc:postgresql://localhost:5432/proradio
+  username: postgres
+  password: 123
+
+security:
+  oauth2:
+    client:
+      client-id: cliente
+      client-secret: password
+      scope: read,write
+      auto-approve-scopes: '.*'
+
+spring:
+  jpa:
+    database-platform: org.hibernate.spatial.dialect.postgis.PostgisDialect
