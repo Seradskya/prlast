@@ -14,3 +14,9 @@
 **Use Case**
 
 ![Image alt](https://github.com/Seradskya/ProRadioBack/blob/master/Use%20case.jpg)
+
+# Команда разработчиков
+Дунаева Елизавета
+Кожевникова Наталья
+Серадская Дарья
+Беляев Алексей
