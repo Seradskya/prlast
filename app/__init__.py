@@ -35,11 +35,10 @@ def create_app():
 
     db.init_app(app)
     migrate.init_app(app, db)
-    ma.init_app(app, db)
+    ma.init_app(app)
     api.init_app(app)
-    # api.add_namespace(resource.user_ns)
-    # api.add_namespace(resource.post_ns)
-    # api.add_namespace(resource.comment_ns)
+    api.add_namespace(resource.user_ns)
+    api.add_namespace(resource.radio_channel_ns)
 
     cors.init_app(app)
 
