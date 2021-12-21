@@ -7,4 +7,4 @@ class RegistrationData:
     firstname: str
     lastname: str
     password: str
-    website: str
+    name: str
