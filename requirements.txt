@@ -1,0 +1,10 @@
+flask
+flask_cors
+flask_migrate
+flask_praetorian
+flask_restx
+flask_sqlalchemy
+flask_accepts
+sqlalchemy
+gunicorn
+psycopg2
