@@ -1,1 +1,1 @@
-web: gunicorn newradiobacklast:app
+web: gunicorn app:prlast
