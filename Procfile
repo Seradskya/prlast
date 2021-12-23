@@ -1,1 +1,1 @@
-web: gunicorn prplast:app
+web: gunicorn prlast:app
