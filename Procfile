@@ -1,1 +1,1 @@
-web: gunicorn app:prlast
+web: gunicorn prlast.wsgi
