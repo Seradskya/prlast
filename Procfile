@@ -1,1 +1,1 @@
-web: gunicorn prlast.wsgi
+web: gunicorn 'app:create_app()'
