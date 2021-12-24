@@ -1,3 +1,4 @@
+import flask_praetorian
 from flask import request
 from flask_accepts import responds, accepts
 from flask_restx import Resource, Namespace
@@ -43,11 +44,13 @@ class UserRegistrationResource(Resource):
 
 @user_ns.route("/<int:user_id>")
 class UserResource(Resource):
+    @flask_praetorian.auth_required
     @user_ns.doc('User data', security='Bearer')
     @responds(schema=UserSchema, api=user_ns, status_code=200)
     def get(self, user_id):
         return db.session.query(User).get(user_id)
 
+    @flask_praetorian.auth_required
     @user_ns.doc('User editing', security='Bearer')
     @accepts(schema=UserSchema, api=user_ns)
     @responds(schema=UserSchema, api=user_ns, status_code=200)
