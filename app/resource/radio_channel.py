@@ -44,11 +44,25 @@ class RadioChannelChangeResource(Resource):
     def put(self, radio_id):
         data = request.parsed_obj
         name = data.name
+        cover_url = data.cover_url
+        radio_stream_url = data.radio_stream_url
+        is_active = data.is_active
+        is_popular = data.is_popular
         db.session.query(RadioChannel).filter_by(id=radio_id).update(
-            {'name': name}
+            {'name': name, 'cover_url': cover_url, 'radio_stream_url': radio_stream_url, 'is_active': is_active,
+             'is_popular': is_popular}
         )
         db.session.commit()
         return db.session.query(RadioChannel).get(radio_id)
+
+    @flask_praetorian.auth_required
+    @radio_channel_ns.doc('Radio editing delete', security='Bearer')
+    @accepts(schema=RadioChannelSchema, api=radio_channel_ns)
+    @responds(schema=RadioChannelSchema, api=radio_channel_ns, status_code=200)
+    def delete(self, radio_id):
+        db.session.query(RadioChannel).filter_by(id=radio_id).delete(synchronize_session=False)
+        db.session.commit()
+        return 'Удалено'
 
     """@radio_channel_ns.doc('User editing', security='Bearer')
     @accepts(schema=RadioChannelSchema, api=radio_channel_ns)
