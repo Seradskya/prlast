@@ -42,7 +42,8 @@ class RadioChannelChangeResource(Resource):
     @accepts(schema=RadioChannelSchema, api=radio_channel_ns)
     @responds(schema=RadioChannelSchema, api=radio_channel_ns, status_code=200)
     def put(self, radio_id):
-        name = request.form['name']
+        data = request.parsed_obj
+        name = data.name
         db.session.query(RadioChannel).filter_by(id=radio_id).update(
             {'name': name}
         )
