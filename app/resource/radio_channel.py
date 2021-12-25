@@ -42,14 +42,12 @@ class RadioChannelChangeResource(Resource):
     @accepts(schema=RadioChannelSchema, api=radio_channel_ns)
     @responds(schema=RadioChannelSchema, api=radio_channel_ns, status_code=200)
     def put(self, radio_id):
-        radio_channel = request.parsed_obj
-        if radio_channel.id is not None:
-            radio_channel.id = guard.extract_jwt_token(guard.read_token())['id']
-        if radio_id.id != guard.extract_jwt_token(guard.read_token())['id']:
-            return {'status': 'error', 'message': 'Permission denied'}, 403
-        db.session.add(radio_channel)
+        name = request.form['name']
+        db.session.query(RadioChannel).filter_by(id=radio_id).update(
+            {'name': name}
+        )
         db.session.commit()
-        return radio_channel
+        return db.session.query(RadioChannel).get(radio_id)
 
     """@radio_channel_ns.doc('User editing', security='Bearer')
     @accepts(schema=RadioChannelSchema, api=radio_channel_ns)
