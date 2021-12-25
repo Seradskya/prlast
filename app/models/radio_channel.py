@@ -19,6 +19,16 @@ class RadioChannel(db.Model):
         return self.id
 
     @classmethod
+    def lookup(cls, name):
+        """
+        *Required Method*
+        flask-praetorian requires that the user class implements a ``lookup()``
+        class method that takes a single ``username`` argument and returns a user
+        instance if there is one that matches or ``None`` if there is not.
+        """
+        return db.session.query(cls).filter_by(name=name).one_or_none()
+
+    @classmethod
     def identify(cls, radio_id):
         """
         *Required Method*
