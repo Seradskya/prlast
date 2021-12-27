@@ -57,7 +57,6 @@ class RadioChannelChangeResource(Resource):
 
     @flask_praetorian.auth_required
     @radio_channel_ns.doc('Radio editing delete', security='Bearer')
-    @accepts(schema=RadioChannelSchema, api=radio_channel_ns)
     @responds(schema=RadioChannelSchema, api=radio_channel_ns, status_code=200)
     def delete(self, radio_id):
         db.session.query(RadioChannel).filter_by(id=radio_id).delete(synchronize_session=False)
