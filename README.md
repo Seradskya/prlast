@@ -23,3 +23,6 @@
 Серадская Дарья
 
 Беляев Алексей
+
+#Выполнен на языке Python с использованием фреймворка flask
+#Выложено на heroku по ссылке https://newradiobacklast.herokuapp.com/
