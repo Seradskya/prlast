@@ -7,4 +7,5 @@ class Config:
     JWT_REFRESH_LIFESPAN = {"days": 30}
     # SQLALCHEMY_DATABASE_URI = 'sqlite:///app.db'
     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL').replace('postgres:', 'postgresql:')
+
     SQLALCHEMY_TRACK_MODIFICATIONS = False
