@@ -10,7 +10,7 @@ from app.models.db_init import db
 from app.schema.playlist import PlaylistSchema, PlaylistAddChannelSchema
 from app.resource.init_guard import guard
 
-playlist_ns = Namespace('playlist', description='Операции для взаимодействия с плейлистами')
+playlist_ns = Namespace('playlist', description='Операwции для взаимодействия с плейлистами')
 
 
 @playlist_ns.route("/add/<string:user_id>")
