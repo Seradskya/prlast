@@ -22,7 +22,7 @@ class PlaylistResource(Resource):
         playlist.user_id = user_id
         db.session.add(playlist)
         db.session.commit()
-        return {'status': 'ok'}
+        return {'id': playlist.id}
 
 
 @playlist_ns.route("/add_channel")
