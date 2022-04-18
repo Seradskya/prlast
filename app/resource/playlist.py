@@ -53,7 +53,6 @@ class PlaylistDellChannelResource(Resource):
 
 @playlist_ns.route("/<int:playlist_id>")
 class PlaylistChangeResource(Resource):
-    @flask_praetorian.auth_required
     @playlist_ns.doc('Get playlist channels', security='Bearer')
     def get(self, playlist_id):
         playlist = db.session.query(Playlist).filter_by(id=playlist_id).first()
