@@ -10,6 +10,7 @@ from app.models.db_init import db
 from app.schema.abtest import AbtestSchema
 from app.resource.init_guard import guard
 import random
+import math
 
 abtest_ns = Namespace('abtest', description='Операwции для проведения  тестов')
 
@@ -68,4 +69,24 @@ class AbtestAllResource(Resource):
         return result
 
 
-
+@abtest_ns.route("get_convers/<int:scen_id>")
+class AbtestAllIntervalsResource(Resource):
+    @abtest_ns.doc('Get convers and intervals', security='Bearer')
+    def get(self, scen_id):
+        results_lucky = db.session.query(Abtest).filter(Abtest.scen_id == scen_id, Abtest.flag == 0).all()
+        result_lucky = 0
+        for test in results_lucky:
+            result_lucky = result_lucky + 1
+        results_all = db.session.query(Abtest).filter(Abtest.scen_id == scen_id, Abtest.flag == 1).all()
+        result_all = 0
+        for test in results_all:
+            result_all = result_all + 1
+        result = result_lucky/result_all
+        sensivity = 0.95
+        parametr = 0.05
+        parametr_sec = 0.0475
+        sigma = math.sqrt(parametr_sec / result_lucky)
+        y = sigma * 1.96
+        interval_first = 0.95 - y
+        interval_second = 0.95 + y
+        return {'convers': result, 'interval_first': interval_first, 'interval_second': interval_second}
