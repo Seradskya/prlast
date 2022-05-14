@@ -33,7 +33,7 @@ class AbtestResource(Resource):
 class AbtestLuckyResource(Resource):
     @abtest_ns.doc('Get lucky results', security='Bearer')
     def get(self, scen_id):
-        results = db.session.query(Abtest).filter_by(Abtest.scen_id == scen_id & Abtest.flag == 0).all()
+        results = db.session.query(Abtest).filter_by(Abtest.scen_id == scen_id, Abtest.flag == 0).all()
         result = 0
         for test in results:
             result = result + 1
@@ -44,7 +44,7 @@ class AbtestLuckyResource(Resource):
 class AbtestLuckyResource(Resource):
     @abtest_ns.doc('Get all results', security='Bearer')
     def get(self, scen_id):
-        results = db.session.query(Abtest).filter_by(Abtest.scen_id == scen_id & Abtest.flag == 1).all()
+        results = db.session.query(Abtest).filter_by(Abtest.scen_id == scen_id, Abtest.flag == 1).all()
         result = 0
         for test in results:
             result = result + test.flag
@@ -55,11 +55,11 @@ class AbtestLuckyResource(Resource):
 class AbtestLuckyResource(Resource):
     @abtest_ns.doc('Get convers', security='Bearer')
     def get(self, scen_id):
-        results_lucky = db.session.query(Abtest).filter_by(Abtest.scen_id == scen_id & Abtest.flag == 0).all()
+        results_lucky = db.session.query(Abtest).filter_by(Abtest.scen_id == scen_id, Abtest.flag == 0).all()
         result_lucky = 0
         for test in results_lucky:
             result_lucky = result_lucky + 1
-        results_all = db.session.query(Abtest).filter_by(Abtest.scen_id == scen_id & Abtest.flag == 1).all()
+        results_all = db.session.query(Abtest).filter_by(Abtest.scen_id == scen_id, Abtest.flag == 1).all()
         result_all = 0
         for test in results_all:
             result_all = result_all + test.flag
