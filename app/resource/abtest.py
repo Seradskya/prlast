@@ -48,7 +48,7 @@ class AbtestLuckyResource(Resource):
         results = db.session.query(Abtest).filter(Abtest.scen_id == scen_id, Abtest.flag == 1).all()
         result = 0
         for test in results:
-            result = result + test.flag
+            result = result + 1
         return result
 
 
@@ -63,7 +63,7 @@ class AbtestAllResource(Resource):
         results_all = db.session.query(Abtest).filter(Abtest.scen_id == scen_id, Abtest.flag == 1).all()
         result_all = 0
         for test in results_all:
-            result_all = result_all + test.flag
+            result_all = result_all + 1
         result = result_lucky/result_all
         return result
 
