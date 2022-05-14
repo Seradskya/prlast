@@ -33,7 +33,8 @@ class AbtestResource(Resource):
 class AbtestLuckyResource(Resource):
     @abtest_ns.doc('Get lucky results', security='Bearer')
     def get(self, scen_id):
-        results = db.session.query(Abtest).filter_by(Abtest.scen_id == scen_id, Abtest.flag == 0).all()
+        results_f = db.session.query(Abtest).filter_by(scen_id=scen_id).all()
+        results = results_f.filter(results_f.flag == 0)
         result = 0
         for test in results:
             result = result + 1
