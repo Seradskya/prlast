@@ -59,7 +59,7 @@ class PercentRandomResource(Resource):
         probability_second = db.session.query(Percent).filter_by(scen_id=2).first()
         #result = random.choices([1, 2], weights=[probability_first.probability/100, probability_second.probability/100])[0]
 
-        return {'scen_id': probability_first}
+        return {'scen_id': probability_first.probability}
 
 
 
