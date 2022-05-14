@@ -69,7 +69,7 @@ class AbtestAllResource(Resource):
         return result
 
 
-@abtest_ns.route("get_convers/<int:scen_id>")
+@abtest_ns.route("get_convers_intervals/<int:scen_id>")
 class AbtestAllIntervalsResource(Resource):
     @abtest_ns.doc('Get convers and intervals', security='Bearer')
     def get(self, scen_id):
