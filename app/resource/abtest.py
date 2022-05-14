@@ -82,11 +82,11 @@ class AbtestAllIntervalsResource(Resource):
         for test in results_all:
             result_all = result_all + 1
         result = result_lucky/result_all
-        sensivity = 0.95
-        parametr = 0.05
-        parametr_sec = 0.0475
+        sensivity = result
+        parametr = 1-result
+        parametr_sec = sensivity*parametr
         sigma = math.sqrt(parametr_sec / result_lucky)
         y = sigma * 1.96
-        interval_first = 0.95 - y
-        interval_second = 0.95 + y
+        interval_first = result - y
+        interval_second = result + y
         return {'convers': result, 'interval_first': interval_first, 'interval_second': interval_second}
