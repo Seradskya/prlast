@@ -41,6 +41,8 @@ def create_app():
     api.add_namespace(resource.radio_channel_ns)
     api.add_namespace(resource.mobile_user_ns)
     api.add_namespace(resource.playlist_ns)
+    api.add_namespace(resource.abtest_ns)
+    api.add_namespace(resource.percent_ns)
 
     cors.init_app(app)
 
