@@ -89,4 +89,4 @@ class AbtestAllIntervalsResource(Resource):
         y = sigma * 1.96
         interval_first = result - y
         interval_second = result + y
-        return {'convers': result*100, 'interval_first': interval_first, 'interval_second': interval_second}
+        return {'convers': result*100, 'interval_first': interval_first*100, 'interval_second': interval_second*100}
