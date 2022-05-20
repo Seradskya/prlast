@@ -65,7 +65,7 @@ class AbtestAllResource(Resource):
         result_all = 0
         for test in results_all:
             result_all = result_all + 1
-        result = result_lucky/result_all
+        result = result_lucky*100/result_all
         return result
 
 
@@ -89,4 +89,4 @@ class AbtestAllIntervalsResource(Resource):
         y = sigma * 1.96
         interval_first = result - y
         interval_second = result + y
-        return {'convers': result, 'interval_first': interval_first, 'interval_second': interval_second}
+        return {'convers': result*100, 'interval_first': interval_first, 'interval_second': interval_second}
