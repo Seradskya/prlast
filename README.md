@@ -9,7 +9,7 @@
 # Документация
 **Диаграмма последовательностей**
 
-![Image alt](https://github.com/Seradskya/ProRadioBack/blob/master/Диагр.jpg)
+![Image alt](https://github.com/Seradskya/ProRadioBack/blob/master/Диагр.jpg](https://github.com/Seradskya/ProRadioBack/blob/master/Диаграмма%20последовательностей%202.drawio.png)
 
 **Use Case**
 
